@@ -3,218 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Punto Cristal & Energía Solar</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Ingeniería Integral .cristal - En Construcción</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #0284c7;
-            --secondary: #0369a1;
-            --dark: #0f172a;
-            --light: #f8fafc;
-            --accent: #f59e0b;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-        }
-
-        header {
-            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
-            color: white;
-            padding: 100px 20px;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             text-align: center;
-        }
-
-        header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            color: #ffffff;
-        }
-
-        header h1 span {
-            color: var(--accent);
-        }
-
-        header p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
-
-        .btn {
-            background-color: var(--accent);
-            color: var(--dark);
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        .btn:hover {
-            background-color: #d97706;
-            color: white;
-            transform: translateY(-2px);
+            padding: 20px;
         }
 
         .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 60px 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 40px;
-            color: var(--dark);
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            width: 60px;
-            height: 4px;
-            background-color: var(--accent);
-            display: block;
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-
-        .card-content {
-            padding: 25px;
-        }
-
-        .card-content h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            color: var(--secondary);
-        }
-
-        .card-content p {
-            color: #64748b;
-            font-size: 0.95rem;
-        }
-
-        .contact-section {
-            background-color: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 60px 20px;
+            max-width: 600px;
+            background: rgba(30, 41, 59, 0.7);
+            padding: 40px 30px;
             border-radius: 16px;
-            margin: 40px 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .contact-section h2 {
-            margin-bottom: 15px;
+        .icon {
+            font-size: 50px;
+            margin-bottom: 20px;
         }
 
-        .contact-section p {
-            margin-bottom: 25px;
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #38bdf8;
+            font-weight: 700;
+        }
+
+        h1 span {
+            color: #f8fafc;
+        }
+
+        p {
+            font-size: 1rem;
             color: #94a3b8;
+            margin-bottom: 30px;
+            line-height: 1.6;
         }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #020617;
-            color: #64748b;
+        .loader {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: #38bdf8;
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+
+        .dot:nth-child(1) { animation-delay: -0.32s; }
+        .dot:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
+        }
+
+        .contact-info {
             font-size: 0.9rem;
+            color: #cbd5e1;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
         }
 
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.1rem;
-            }
+        .contact-info a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Punto Cristal <span>& Energía Solar</span></h1>
-        <p>Soluciones arquitectónicas en vidrio, ventaneria en aluminio y sistemas solares eficientes.</p>
-        <a href="#contacto" class="btn">Cotiza tu Proyecto</a>
-    </header>
-
     <div class="container">
-        <h2 class="section-title">Nuestros Servicios y Productos</h2>
+        <div class="icon">⚙️</div>
+        <h1>Ingeniería Integral <span>.cristal</span></h1>
+        <p>Estamos construyendo un espacio digital a la altura de nuestros proyectos. Muy pronto habilitaremos nuestra nueva plataforma web.</p>
         
-        <div class="grid">
-            <!-- Servicio 1 -->
-            <div class="card">
-                <img src="https://alumundocol.com/wp-content/uploads/2026/02/alumundocol-imgs-04-765x1024.webp" alt="Ventaneria y Ventanas">
-                <div class="card-content">
-                    <h3>Ventanería y Puertas</h3>
-                    <p>Diseño y fabricación de ventanería en aluminio arquitectónico y puertas de vidrio templado de alta seguridad y estética.</p>
-                </div>
-            </div>
-
-            <!-- Servicio 2 -->
-            <div class="card">
-                <img src="https://cocinasintegralesbucaramanga.com/assets/img/uploads/foto_din_divisiones-bano-vidrio.webp?v=1788551964" alt="Divisiones de baño y cristales">
-                <div class="card-content">
-                    <h3>Cristalería y Paneles</h3>
-                    <p>Divisiones de baño a la medida, espejos decorativos, barandas y cerramientos en vidrio templado y laminado.</p>
-                </div>
-            </div>
-
-            <!-- Servicio 3 (Imagen corregida de paneles solares) -->
-            <div class="card">
-                <img src="https://avatarenergia.com/wp-content/uploads/2022/12/Instalacion-de-paneles-solares.jpg" alt="Instalación de Energía Solar">
-                <div class="card-content">
-                    <h3>Instalación de Energía Solar</h3>
-                    <p>Implementación de paneles solares fotovoltaicos para reducir costos de energía y potenciar la sostenibilidad en hogares y comercios.</p>
-                </div>
-            </div>
+        <div class="loader">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
         </div>
 
-        <div class="contact-section" id="contacto">
-            <h2>¿Listo para modernizar tu espacio?</h2>
-            <p>Contáctanos directamente para asesoría personalizada y cotizaciones sin compromiso.</p>
-            <a href="https://wa.me/573188908673?text=Hola,%20estoy%20interesado%20en%20los%20servicios%20de%20Punto%20Cristal" class="btn" target="_blank">WhatsApp 1</a>
-             <a href="https://wa.me/573215813603?text=Hola,%20estoy%20interesado%20en%20los%20servicios%20de%20Punto%20Cristal" class="btn" target="_blank">WhatsApp 2</a>
+        <div class="contact-info">
+            <p>¿Necesitas ponerte en contacto con nosotros? Escríbenos a:<br>
+            <a href="mailto:contacto@ingenieriaintegralcristal.com">contacto@ingenieriaintegralcristal.com</a></p>
         </div>
     </div>
-
-    <footer>
-        <p>&copy; 2026 Punto Cristal & Energía Solar. Todos los derechos reservados.</p>
-    </footer>
 
 </body>
 </html>
