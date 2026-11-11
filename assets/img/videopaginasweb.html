@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Video promocional: páginas web para empresas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #0b1020;
+  --ac: #4f8cff;
+  --ac2: #22d3a6;
+  --tx: #f1f5ff;
+  --mu: #9aa7c7;
+}
+* {
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--tx);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 20%, #1a2650, #0b1020 70%);
+  overflow: hidden;
+  container-type: inline-size;
+  cursor: pointer;
+  user-select: none;
+}
+.hook, .cta {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6%;
+  opacity: 0;
+  transition: opacity .6s;
+  pointer-events: none;
+}
+.hook h1 {
+  font-size: 6.2cqw;
+  margin: 0;
+  line-height: 1.15;
+}
+.hook p {
+  font-size: 2.6cqw;
+  color: var(--mu);
+  margin: 2cqw 0 0;
+}
+.cta h2 {
+  font-size: 6cqw;
+  margin: 0 0 1.5cqw;
+  color: #fbbf24;
+}
+.cta .btn {
+  background: linear-gradient(90deg, var(--ac), var(--ac2));
+  padding: 1.4cqw 3.4cqw;
+  border-radius: 99px;
+  font-size: 3cqw;
+  font-weight: 700;
+  color: #04111f;
+}
+.cta p {
+  font-size: 2.6cqw;
+  color: var(--mu);
+  margin: 2cqw 0 0;
+}
+[data-s="1"] .hook, [data-s="5"] .cta {
+  opacity: 1;
+}
+.win {
+  position: absolute;
+  left: 11%;
+  top: 9%;
+  width: 78%;
+  height: 72%;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px #0008;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(8%) scale(.96);
+  transition: all .8s;
+}
+[data-s="2"] .win, [data-s="3"] .win {
+  opacity: 1;
+  transform: none;
+}
+[data-s="4"] .win {
+  opacity: 1;
+  transform: translateX(-24%) scale(.8);
+}
+.bar {
+  height: 8%;
+  background: #e8ecf5;
+  display: flex;
+  align-items: center;
+  gap: 1%;
+  padding: 0 2%;
+}
+.bar i {
+  width: 1.4cqw;
+  height: 1.4cqw;
+  border-radius: 50%;
+  background: #c3cadb;
+}
+.url {
+  flex: 1;
+  background: #fff;
+  border-radius: 99px;
+  padding: .4cqw 1.6cqw;
+  font-size: 1.7cqw;
+  color: #334;
+  min-height: 2.6cqw;
+}
+.view {
+  height: 92%;
+  overflow: hidden;
+  color: #16203a;
+}
+.page {
+  transition: transform 5s ease-in-out;
+}
+[data-s="3"] .page {
+  transform: translateY(-62%);
+}
+[data-s="4"] .page {
+  transform: translateY(-62%);
+  transition: none;
+}
+.hero {
+  height: 30cqw;
+  background: linear-gradient(120deg, #4f8cff, #22d3a6);
+  color: #fff;
+  padding: 5cqw 4cqw;
+}
+.hero b {
+  font-size: 4cqw;
+  display: block;
+}
+.hero span {
+  font-size: 2cqw;
+}
+.hero u {
+  display: inline-block;
+  margin-top: 1.6cqw;
+  background: #fff;
+  color: #16203a;
+  text-decoration: none;
+  padding: .8cqw 2cqw;
+  border-radius: 99px;
+  font-size: 1.8cqw;
+  font-weight: 700;
+}
+.sec {
+  padding: 3cqw 4cqw;
+}
+.sec h3 {
+  font-size: 2.6cqw;
+  margin: 0 0 1.5cqw;
+}
+.cards {
+  display: flex;
+  gap: 1.5cqw;
+}
+.cards div {
+  flex: 1;
+  height: 11cqw;
+  border-radius: 8px;
+  background: #eef2fb;
+  padding: 1.5cqw;
+  font-size: 1.8cqw;
+  font-weight: 600;
+}
+.cards div::before {
+  content: "";
+  display: block;
+  width: 3cqw;
+  height: 3cqw;
+  border-radius: 8px;
+  background: var(--ac);
+  margin-bottom: 1cqw;
+}
+.gal div {
+  background: linear-gradient(135deg, #c9d7ff, #b7f0e1);
+}
+.contact {
+  margin: 3cqw 4cqw;
+  background: #16203a;
+  color: #fff;
+  border-radius: 10px;
+  padding: 3cqw;
+  font-size: 2.2cqw;
+}
+.phone {
+  position: absolute;
+  right: 12%;
+  top: 12%;
+  width: 19%;
+  aspect-ratio: 9/18;
+  background: #fff;
+  border: .8cqw solid #1b2440;
+  border-radius: 2.4cqw;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(12%);
+  transition: all .8s;
+  color: #16203a;
+}
+[data-s="4"] .phone {
+  opacity: 1;
+  transform: none;
+}
+.phone .h {
+  height: 38%;
+  background: linear-gradient(120deg, #4f8cff, #22d3a6);
+  color: #fff;
+  padding: 1.2cqw;
+  font-weight: 700;
+  font-size: 1.7cqw;
+}
+.phone .l {
+  height: 1.2cqw;
+  background: #e3e8f5;
+  margin: 1cqw;
+  border-radius: 4px;
+}
+.wa {
+  position: absolute;
+  bottom: 1.2cqw;
+  left: 1.2cqw;
+  right: 1.2cqw;
+  background: #25d366;
+  color: #fff;
+  text-align: center;
+  border-radius: 99px;
+  padding: .9cqw;
+  font-size: 1.6cqw;
+  font-weight: 700;
+}
+#sub {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  bottom: 4%;
+  text-align: center;
+  font-size: 2.8cqw;
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.75);
+  padding: .8cqw 1.6cqw;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity .3s;
+  pointer-events: none;
+  z-index: 20;
+}
+#sub.on {
+  opacity: 1;
+}
+
+/* Botón y capa de reproducción (Play Overlay) */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 16, 32, 0.65);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  z-index: 30;
+  cursor: pointer;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.overlay.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.play-btn {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4f8cff, #22d3a6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #04111f;
+  font-size: 22px;
+  padding-left: 3px;
+  box-shadow: 0 0 25px rgba(79, 140, 255, 0.5);
+  transition: transform 0.2s ease;
+}
+.overlay:hover .play-btn {
+  transform: scale(1.12);
+}
+.overlay span {
+  color: #f1f5ff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 4px 12px;
+  border-radius: 99px;
+}
+</style>
+</head>
+<body>
+
+<div id="stage" data-s="0">
+  <!-- Capa de Play inicial / repetición -->
+  <div id="overlay" class="overlay">
+    <div id="pbtn" class="play-btn">▶</div>
+    <span id="plabel">Toca para reproducir</span>
+  </div>
+
+  <div class="hook">
+    <h1>¿Tu empresa aún no tiene página web?</h1>
+    <p>Tus clientes te están buscando</p>
+  </div>
+  
+  <div class="win">
+    <div class="bar"><i></i><i></i><i></i><div class="url" id="url"></div></div>
+    <div class="view">
+      <div class="page">
+        <div class="hero">
+          <b id="hb">Tu Empresa</b>
+          <span>Soluciones a tu medida</span><br>
+          <u>Contáctanos</u>
+        </div>
+        <div class="sec">
+          <h3>Servicios</h3>
+          <div class="cards">
+            <div>Servicio 1</div>
+            <div>Servicio 2</div>
+            <div>Servicio 3</div>
+          </div>
+        </div>
+        <div class="sec">
+          <h3>Nuestros trabajos</h3>
+          <div class="cards gal">
+            <div></div><div></div><div></div>
+          </div>
+        </div>
+        <div class="contact">Escríbenos por WhatsApp y cotiza hoy</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="phone">
+    <div class="h">Tu Empresa</div>
+    <div class="l"></div><div class="l"></div><div class="l"></div>
+    <div class="wa">WhatsApp</div>
+  </div>
+
+  <div class="cta">
+    <h2 id="cb">MI EMPRESA</h2>
+    <div class="btn">Cotiza tu página web hoy</div>
+    <p id="cw">tuweb.com</p>
+  </div>
+
+  <div id="sub"></div>
+</div>
+
+<script>
+var st = document.getElementById('stage'),
+    sub = document.getElementById('sub'),
+    overlay = document.getElementById('overlay'),
+    pbtn = document.getElementById('pbtn'),
+    plabel = document.getElementById('plabel'),
+    run = 0;
+
+var BRAND = 'INGENIERIA INTEGRAL';
+var WEB = 'WhatsApp / Web';
+
+function scenes() {
+  return [
+    { t: '¿Tu empresa todavía no tiene página web? Tus clientes te están buscando.', d: 4500 },
+    { t: 'Creamos páginas web profesionales para empresas, con diseño moderno y a tu medida.', d: 5500, f: typeUrl },
+    { t: 'Muestra tus servicios, tus trabajos y todo lo que te hace diferente.', d: 5500 },
+    { t: 'Se ve perfecta en el celular, y tus clientes te escriben directo por WhatsApp.', d: 5000 },
+    { t: 'Cotiza hoy tu página web con nosotros.' , d: 4500 }
+  ];
+}
+
+function typeUrl() {
+  var u = document.getElementById('url'),
+      s = 'https://ingenieriaintegral.vercel.app/',
+      i = 0;
+  u.textContent = '';
+  (function n() {
+    if (i <= s.length) {
+      u.textContent = s.slice(0, i++);
+      setTimeout(n, 50);
+    }
+  })();
+}
+
+function speak(t) {
+  return new Promise(function(r) {
+    try {
+      var s = window.speechSynthesis;
+      if (!s) { r(); return; }
+      var u = new SpeechSynthesisUtterance(t);
+      u.lang = 'es-ES';
+      u.rate = 1.05;
+      var v = s.getVoices().filter(function(x) { return /^es/i.test(x.lang); })[0];
+      if (v) u.voice = v;
+      u.onend = r;
+      u.onerror = r;
+      s.speak(u);
+      setTimeout(r, 8000);
+    } catch(e) {
+      r();
+    }
+  });
+}
+
+function wait(ms) {
+  return new Promise(function(r) { setTimeout(r, ms); });
+}
+
+async function play() {
+  var id = ++run;
+  try { window.speechSynthesis.cancel(); } catch(e) {}
+  
+  overlay.classList.add('hide');
+  document.getElementById('cb').textContent = BRAND;
+  document.getElementById('cw').textContent = WEB;
+
+  var sc = scenes();
+  for (var i = 0; i < sc.length; i++) {
+    if (id !== run) return;
+    st.dataset.s = i + 1;
+    sub.textContent = sc[i].t;
+    sub.className = 'on';
+    if (sc[i].f) sc[i].f();
+    await Promise.all([speak(sc[i].t), wait(sc[i].d)]);
+  }
+
+  if (id === run) {
+    sub.className = '';
+    // Al terminar, muestra el botón para repetir
+    pbtn.textContent = '↺';
+    plabel.textContent = 'Ver de nuevo';
+    overlay.classList.remove('hide');
+  }
+}
+
+// Iniciar al tocar cualquier parte del overlay o del video
+overlay.addEventListener('click', function(e) {
+  e.stopPropagation();
+  play();
+});
+
+st.addEventListener('click', function() {
+  if (overlay.classList.contains('hide')) {
+    play(); // Si ya está corriendo y hacen clic, reinicia
+  }
+});
+</script>
+
+</body>
+</html>

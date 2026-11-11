@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio / Empresa</title>
+    <!-- Estilos locales y responsivos (100% independiente de internet) -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-slate-900 text-slate-100 font-sans antialiased selection:bg-amber-500 selection:text-slate-950">
+
+    <!-- Navbar Fijo (Sticky) y Responsivo -->
+    <header class="fixed top-0 left-0 w-full bg-slate-950/80 backdrop-blur-md z-40 border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <a href="#inicio" class="text-lg sm:text-xl font-bold tracking-wider text-amber-400">INGENIERIA INTERAL-PUNTO CRISTAL</a>
+            
+            <!-- Menú Desktop -->
+            <nav class="hidden md:flex gap-8 text-sm font-medium">
+                <a href="#inicio" class="hover:text-amber-400 transition">Inicio</a>
+                <a href="#servicios" class="hover:text-amber-400 transition">Servicios</a>
+                <a href="#contacto" class="hover:text-amber-400 transition">Contacto</a>
+            </nav>
+
+            <!-- Botón Menú Hamburguesa para Móvil -->
+            <button onclick="toggleMenuMovil()" class="md:hidden text-slate-300 hover:text-white p-2 rounded-lg hover:bg-slate-800/60 focus:outline-none transition" aria-label="Abrir menú de navegación">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Menú desplegable Móvil -->
+        <div id="menu-movil" class="hidden md:hidden bg-slate-950/95 border-b border-slate-800 px-6 py-4 flex flex-col gap-3 text-sm font-medium">
+            <a href="#inicio" onclick="toggleMenuMovil()" class="hover:text-amber-400 transition py-1 border-b border-slate-800/50">Inicio</a>
+            <a href="#servicios" onclick="toggleMenuMovil()" class="hover:text-amber-400 transition py-1 border-b border-slate-800/50">Servicios</a>
+            <a href="#contacto" onclick="toggleMenuMovil()" class="hover:text-amber-400 transition py-1">Contacto</a>
+        </div>
+    </header>
+
+    <!-- Sección Inicio / Hero -->
+    <section id="inicio" class="pt-28 pb-16 px-4 sm:px-6 md:pt-36 md:pb-24 text-center max-w-4xl mx-auto">
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-tight">Soluciones Profesionales y de Calidad</h1>
+        <p class="text-base sm:text-lg text-slate-400 mb-8 max-w-2xl mx-auto">Explora nuestros servicios y descubre los proyectos que hemos realizado con éxito.</p>
+        <a href="#servicios"
+            class="inline-block bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-8 py-3 rounded-full transition shadow-lg shadow-amber-500/20 active:scale-95">Ver Servicios</a>
+    </section>
+
+    <!-- Sección Servicios (Grilla dinámica) -->
+    <section id="servicios" class="py-16 sm:py-20 px-4 sm:px-6 max-w-6xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl font-bold text-center mb-10 sm:mb-12 border-b border-slate-800 pb-4">Nuestros Servicios</h2>
+        <div id="grid-servicios" class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            <!-- Los servicios del JSON se cargarán aquí automáticamente -->
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="py-16 sm:py-20 px-4 sm:px-6 bg-slate-950 border-t border-slate-800 text-center">
+        <div class="max-w-xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-3">¿Listo para comenzar tu proyecto?</h2>
+            <p class="text-slate-400 text-sm sm:text-base mb-8">Contáctanos directamente y hablemos de lo que necesitas.</p>
+            <a href="https://wa.me/573000000000" target="_blank"
+                class="inline-block w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-3.5 rounded-full transition shadow-lg shadow-emerald-600/20 active:scale-95">Escribir por WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- Footer sencillo -->
+    <footer class="py-6 text-center text-xs text-slate-500 border-t border-slate-900">
+        <p>© 2026 Mi Empresa. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- MODAL DINÁMICO (Oculto por defecto, con cierre al dar clic fuera) -->
+    <div id="modal-detalle"
+        onclick="if(event.target === this) cerrarModal()"
+        class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 sm:p-4">
+        <div class="bg-slate-900 border border-slate-800 w-full max-w-2xl rounded-2xl p-5 sm:p-6 relative max-h-[92vh] overflow-y-auto shadow-2xl">
+            <button onclick="cerrarModal()"
+                class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold bg-slate-800 hover:bg-slate-700 w-8 h-8 rounded-full flex items-center justify-center transition" aria-label="Cerrar modal">✕</button>
+            <div id="contenido-modal">
+                <!-- Contenido inyectado por JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Archivo JavaScript externo -->
+    <script src="app.js"></script>
+</body>
+
+</html>
