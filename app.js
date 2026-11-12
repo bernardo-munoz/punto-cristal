@@ -139,5 +139,69 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// Manejo del formulario de contacto Web3Forms con AJAX (envío sin recargar página)
+const formContacto = document.getElementById('formulario-contacto');
+const resultadoContacto = document.getElementById('resultado-contacto');
+const btnSubmit = document.getElementById('form-btn-submit');
+
+if (formContacto && resultadoContacto) {
+    formContacto.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Estado cargando en el botón
+        if (btnSubmit) {
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML = `
+                <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                </svg>
+                <span>Enviando mensaje...</span>
+            `;
+        }
+        resultadoContacto.innerHTML = `<span class="text-slate-400">Enviando tu consulta...</span>`;
+
+        const formData = new FormData(formContacto);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+        .then(async (response) => {
+            let resJson = await response.json();
+            if (response.status === 200) {
+                resultadoContacto.innerHTML = `<span class="text-emerald-400 font-semibold">✓ ¡Mensaje enviado con éxito! Te responderemos muy pronto.</span>`;
+                formContacto.reset();
+            } else {
+                resultadoContacto.innerHTML = `<span class="text-rose-400 font-semibold">${resJson.message || 'Error al enviar el mensaje. Intenta por WhatsApp.'}</span>`;
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            resultadoContacto.innerHTML = `<span class="text-rose-400 font-semibold">Hubo un problema de conexión. Por favor escríbenos por WhatsApp.</span>`;
+        })
+        .finally(() => {
+            if (btnSubmit) {
+                btnSubmit.disabled = false;
+                btnSubmit.innerHTML = `
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                    </svg>
+                    <span>Enviar Mensaje</span>
+                `;
+            }
+            setTimeout(() => {
+                if (resultadoContacto) resultadoContacto.innerHTML = '';
+            }, 6000);
+        });
+    });
+}
+
 // Inicializar carga al arrancar
 cargarDatos();

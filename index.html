@@ -96,6 +96,63 @@
                 </a>
             </div>
 
+            <!-- Formulario de Contacto Web3Forms -->
+            <div class="contact-form-container mb-14 text-left">
+                <div class="contact-form-card">
+                    <div class="text-center mb-6">
+                        <h3 class="text-xl sm:text-2xl font-bold text-amber-400 mb-2">Envíanos un mensaje</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm">Escríbenos directamente y te responderemos a tu correo en la brevedad posible.</p>
+                    </div>
+
+                    <!-- Código para recibir los datos con Web3Forms -->
+                    <form id="formulario-contacto" action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+                        <!-- Clave de Acceso Web3Forms -->
+                        <input type="hidden" name="access_key" value="ba5517b1-51a5-4678-9ccf-3a91bcb4de62">
+                        <!-- Asunto del Correo -->
+                        <input type="hidden" name="subject" value="Nuevo mensaje desde sitio web Punto Cristal">
+                        <!-- Protección Anti-Spam (Honeypot) -->
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                        <!-- Campo Nombre -->
+                        <div class="form-group">
+                            <label for="form-name" class="form-label">Nombre completo *</label>
+                            <input type="text" id="form-name" name="name" required placeholder="Tu nombre y apellido" class="form-input">
+                        </div>
+
+                        <!-- Campo Correo Electrónico -->
+                        <div class="form-group">
+                            <label for="form-email" class="form-label">Correo electrónico *</label>
+                            <input type="email" id="form-email" name="email" required placeholder="tu-correo@ejemplo.com" class="form-input">
+                        </div>
+
+                        <!-- Campo Número de Celular / WhatsApp -->
+                        <div class="form-group">
+                            <label for="form-phone" class="form-label">Número de celular / WhatsApp *</label>
+                            <input type="tel" id="form-phone" name="phone" required placeholder="Ej: 318 890 8673" class="form-input">
+                        </div>
+
+                        <!-- Campo Mensaje -->
+                        <div class="form-group">
+                            <label for="form-message" class="form-label">Mensaje o consulta *</label>
+                            <textarea id="form-message" name="message" rows="4" required placeholder="Describe tu proyecto, medidas, materiales o consulta..." class="form-textarea"></textarea>
+                        </div>
+
+                        <!-- Botón Enviar (Centrado, elegante y redondeado) -->
+                        <div class="text-center pt-2">
+                            <button type="submit" id="form-btn-submit" class="form-submit-btn">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                                </svg>
+                                <span>Enviar Mensaje</span>
+                            </button>
+                        </div>
+
+                        <!-- Mensaje de Estado / Notificación -->
+                        <div id="resultado-contacto" class="text-center text-sm pt-2 min-h-[1.5rem]"></div>
+                    </form>
+                </div>
+            </div>
+
             <!-- Redes Sociales -->
             <div id="redes" class="pt-10 border-t border-slate-800">
                 <h3 class="text-xl sm:text-2xl font-bold text-amber-400 mb-2">Síguenos en Redes Sociales</h3>
