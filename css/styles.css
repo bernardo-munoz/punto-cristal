@@ -2304,6 +2304,7 @@ footer {
   border: 1px solid #BAE6FD;
   border-radius: 1rem;
   box-shadow: 0 12px 30px rgb(3 105 161 / 0.08);
+  overflow-wrap: anywhere;
 }
 
 .policy-card h1 {
