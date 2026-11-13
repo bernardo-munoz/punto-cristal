@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Portafolio / Empresa</title>
     <!-- Estilos locales y responsivos (100% independiente de internet) -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body class="bg-slate-900 text-slate-100 font-sans antialiased selection:bg-amber-500 selection:text-slate-950">
@@ -128,13 +128,28 @@
                         <!-- Campo Número de Celular / WhatsApp -->
                         <div class="form-group">
                             <label for="form-phone" class="form-label">Número de celular / WhatsApp *</label>
-                            <input type="tel" id="form-phone" name="phone" required placeholder="Ej: 318 890 8673" class="form-input">
+                            <input type="tel" id="form-phone" name="phone" required inputmode="numeric" pattern="3[0-9]{2} ?[0-9]{3} ?[0-9]{4}" maxlength="12" title="Ingresa un celular colombiano de 10 dígitos que empiece por 3." placeholder="Ej: 318 000 0000" class="form-input">
                         </div>
 
                         <!-- Campo Mensaje -->
                         <div class="form-group">
                             <label for="form-message" class="form-label">Mensaje o consulta *</label>
-                            <textarea id="form-message" name="message" rows="4" required placeholder="Describe tu proyecto, medidas, materiales o consulta..." class="form-textarea"></textarea>
+                         <textarea id="form-message" name="message" rows="4" required placeholder="Describe tu proyecto, medidas, materiales o consulta..." class="form-textarea"></textarea>
+                        </div>
+
+                        <div class="form-consent">
+                            <input type="checkbox" id="autorizacion-datos" name="autorizacion_datos_personales"
+                                value="Autorizo el tratamiento de mis datos personales" required>
+                            <label for="autorizacion-datos">
+                                Autorizo de manera previa, expresa e informada a
+                                <strong>Ingeniería Integral Punto Cristal</strong> para tratar mis
+                                datos con el fin de atender esta consulta y gestionar cotizaciones o servicios.
+                                He leído la
+                                <a href="politica-tratamiento-datos.html" target="_blank" rel="noopener noreferrer">
+                                    Política de Tratamiento de Datos Personales
+                                </a>
+                                y conozco mis derechos.
+                            </label>
                         </div>
 
                         <!-- Botón Enviar (Centrado, elegante y redondeado) -->
